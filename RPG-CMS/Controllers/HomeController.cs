@@ -22,5 +22,10 @@ namespace RPG_CMS.Controllers
         {
             return View();
         }
+
+        public ActionResult Editor()
+        {
+            return View();
+        }
     }
 }

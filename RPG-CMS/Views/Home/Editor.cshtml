@@ -1,0 +1,107 @@
+﻿@{
+    ViewBag.Title = "Editor";
+    string[] fonts = { "Arial", "Calibri", "Consolas", "Century Gothic", "Tahoma", "Times New Roman" };
+    int[] fontSizes = { 8, 10, 12, 14, 18, 24, 36 };
+}
+
+@section javascript {
+<script>
+    window.addEventListener("load", function () {
+
+        var editor = richTextField.contentDocument;
+        editor.designMode = "on";
+
+        boldButton.addEventListener("click", function () {
+            editor.execCommand("bold");
+        }, false);
+
+        italicButton.addEventListener("click", function () {
+            editor.execCommand("italic");
+        }, false);
+
+        underlineButton.addEventListener("click", function () {
+            editor.execCommand("underline");
+        }, false);
+
+        strikethroughButton.addEventListener("click", function () {
+            editor.execCommand("strikethrough");
+        }, false);
+
+        fontDropdown.addEventListener("change", function (event) {
+            editor.execCommand("fontName", false, event.target.value);
+        }, false);
+
+        fontSizeDropdown.addEventListener("change", function (event) {
+            editor.execCommand("fontSize", false, event.target.value);
+        }, false);
+
+        fontColorButton.addEventListener("change", function (event) {
+            editor.execCommand("foreColor", false, event.target.value);
+        }, false);
+
+        fontHighlightColorButton.addEventListener("change", function (event) {
+            editor.execCommand("backColor", false, event.target.value);
+        }, false);
+
+        unorderedListButton.addEventListener("click", function () {
+            editor.execCommand("insertUnorderedList");
+        }, false);
+
+        orderedListButton.addEventListener("click", function () {
+            editor.execCommand("insertOrderedList");
+        }, false);
+
+
+
+    }, false);
+</script>
+}
+
+<h2>Editor</h2>
+
+<div id="textEditor">
+    <div id="textEditorRibbon">
+        <button id="boldButton" title="Bold"><b>B</b></button>
+        <button id="italicButton" title="Italic"><em>I</em></button>
+        <button id="underlineButton" title="Underline"><u>U</u></button>
+        <button id="strikethroughButton" title="Strikethrough"><s>abc</s></button>
+        <div class="vl"></div>
+        <input type="color" id="fontColorButton" title="Font Color" />
+        <input type="color" id="fontHighlightColorButton" title="Highlight Color" />
+        <select class="btn btn-secondary dropdown-toggle" id="fontDropdown">
+            @for (int i = 0; i < fonts.Length; i++)
+            {
+                if (fonts[i] != "Times New Roman")
+                {
+                    <option value=@fonts[i] style="font-family:@fonts[i]">@fonts[i]</option>
+                }
+                else
+                {
+                    <option selected="selected" value=@fonts[i] style="font-family:@fonts[i]">@fonts[i]</option>
+                }
+            }
+        </select>
+        <select class="btn btn-secondary dropdown-toggle" id="fontSizeDropdown">
+            @for (int i = 0; i < fontSizes.Length; i++)
+            {
+                if (i != 2)
+                {
+                    <option value=@(i + 1)>@fontSizes[i]</option>
+                }
+                else
+                {
+                    <option selected="selected" value=@(i + 1)>@fontSizes[i]</option>
+                }
+            }
+        </select>
+        <div class="vl"></div>
+        <button id="orderedListButton" title="Numbered List">123</button>
+        <button id="unorderedListButton" title="Bulleted List">&bull;</button>
+
+
+    </div>
+    <div id="richTextArea">
+        <iframe id="richTextField"></iframe>
+    </div>
+</div>
+

@@ -22,3 +22,68 @@ select,
 textarea {
     max-width: 280px;
 }
+
+#textEditor {
+    margin: 0 auto;
+    width: 750px;
+    height: auto;
+}
+
+#textEditorRibbon {
+    border-bottom: none;
+    padding: 10px;
+    background-color: rgb(52,58,64);
+    color: white;
+}
+
+#richTextArea {
+    border: 2px solid rgb(52,58,64);
+    height: 100%;
+    width: 750px;
+}
+
+#richTextField {
+    height: 100%;
+    width: 100%;
+    border: none;
+}
+
+#textEditorRibbon > button {
+    font-size:15px;
+    font-family:'Times New Roman';
+    width: 35px;
+    height: 35px;
+    color: white;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+#textEditorRibbon > button:hover {
+    background-color: rgb(72,78,84);
+    transition: all 0.3s linear 0s;
+}
+
+.vl {
+    display: inline;
+    height: 35px;
+    width: 1px;
+    border: 1px solid white;
+    margin: 2px;
+}
+
+#textEditorRibbon > input[type="color"]{
+    height:35px;
+    width:35px;
+    border:none;
+    outline:none;
+    background-color:transparent;
+    display: inline;
+    margin-top:auto;
+    margin-bottom:auto;
+    vertical-align: middle;
+    position: center;
+    transform:translate(0px,-2px);
+}   
+    

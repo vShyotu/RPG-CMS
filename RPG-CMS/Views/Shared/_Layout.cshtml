@@ -6,6 +6,7 @@
     <title>@ViewBag.Title - RPG-CMS</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    @RenderSection("scripts", false);
 
 </head>
 <body>
@@ -21,9 +22,11 @@
 
                 <ul class="nav navbar-nav mr-auto">
 
-                    <li>@Html.ActionLink("Home", "Index", "Home", new { @class = "nav-link" })</li>
-                    <li>@Html.ActionLink("About", "About", "Home", new { @class = "nav-link" })</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home", new { @class = "nav-link" })</li>
+                    <li>@Html.ActionLink("Home", "Index", "Home", null, new { @class = "nav-link" })</li>
+                    <li>@Html.ActionLink("Editor", "Editor", "Home", null, new { @class = "nav-link" })</li>
+                    <li>@Html.ActionLink("About", "About", "Home", null, new { @class = "nav-link" })</li>
+                    <li>@Html.ActionLink("Contact", "Contact", "Home", null, new { @class = "nav-link" })</li>
+
 
                 </ul>
 
@@ -34,19 +37,18 @@
         </div>
 
     </nav>
-
+    <br />
     <div class="container body-content">
-        <div class="container m-lg-5">
             @RenderBody()
+            <br />
             <hr />
             <footer>
                 <p>&copy; @DateTime.Now.Year - RPG-CMS</p>
             </footer>
-        </div>
     </div>
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
+    @RenderSection("javascript", required: false)
 </body>
 </html>
