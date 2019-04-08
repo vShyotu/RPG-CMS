@@ -6,10 +6,30 @@
 
 @section javascript {
 <script>
-    window.addEventListener("load", function () {
 
-        var editor = richTextField.contentDocument;
+    onLoad();
+
+    //Sets up the editor on page load.
+    function onLoad() {
+
+        var editor;
+
+        editor = getIFrameDocument("richTextField");
         editor.designMode = "on";
+
+        addListenersForEditorToolbar(editor);
+    }
+
+    //Gets the iframe from the document - support for multiple browsers.
+    function getIFrameDocument(id) {
+        if (document.getElementById(id).contentDocument)
+            return document.getElementById(id).contentDocument; //Firefox, Chrome
+        else
+            return document.frames[id].document; //IE
+    }
+    
+    //Adds relevant execcommands to each editor toolbar item listener.
+    function addListenersForEditorToolbar(editor) {
 
         boldButton.addEventListener("click", function () {
             editor.execCommand("bold");
@@ -51,9 +71,7 @@
             editor.execCommand("insertOrderedList");
         }, false);
 
-
-
-    }, false);
+    }
 </script>
 }
 
